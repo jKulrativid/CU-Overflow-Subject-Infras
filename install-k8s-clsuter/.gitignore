@@ -1,0 +1,3 @@
+# exclude secret file
+*-secret.yml
+*-secret.yaml
