@@ -1,0 +1,3 @@
+[submodule "API-Gateway-SA"]
+	path = API-Gateway-SA
+	url = https://github.com/TeeSSK/API-Gateway-SA
