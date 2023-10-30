@@ -1,3 +1,6 @@
 [submodule "API-Gateway-SA"]
 	path = API-Gateway-SA
 	url = https://github.com/TeeSSK/API-Gateway-SA
+[submodule "CU-Overflow-Subject-Service"]
+	path = CU-Overflow-Subject-Service
+	url = https://github.com/jKulrativid/CU-Overflow-Subject-Service
