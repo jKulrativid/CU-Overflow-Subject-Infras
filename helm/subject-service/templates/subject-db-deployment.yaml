@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subject-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subject-db
+  template:
+    metadata:
+      labels:
+        app: subject-db
+    spec:
+      containers:
+      - name: subject-db
+        image: postgres:16.0-alpine3.18
+
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+
+        ports:
+          - containerPort: 5432
+            name: conn-port
+
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: subject-service-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: subject-service-config
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: subject-service-config
+              key: POSTGRES_DBNAME
+
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: subject-db-pv
+
+      volumes:
+        - name: subject-db-pv
+          persistentVolumeClaim:
+              claimName: subject-db-pvc
