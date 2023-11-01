@@ -14,11 +14,11 @@ helm install nginx-ingress ingress-nginx/ingress-nginx
 ```
 
 ## Install Services with Helm
-```
+```bash
 make install_services
 ```
 
 ## To uninstall services, run
-```
+```bash
 make uninstall_services
 ```
