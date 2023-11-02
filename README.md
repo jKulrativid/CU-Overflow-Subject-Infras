@@ -3,9 +3,20 @@
 # Installation
 
 ## Required
+- Docker
 - Kubernetes
 - Helm
 - Make
+- Around 10Gib Disk Space for Persistent Volume in Master Node
+
+## Build All Images
+```bash
+make build_images
+```
+
+## Create Secret Configmap
+#### It is surely a bad practice but it will be patched soon ^^.
+Set secret in 
 
 ## Install Nginx as Ingress Controller
 ```bash
