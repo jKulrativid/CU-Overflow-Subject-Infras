@@ -2,18 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cu-overflow-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
-      - path: /subjects
+      - path: /api
         pathType: Prefix
         backend:
           service:
-            name: subject-app-service
+            name: gateway-app-service
             port:
-              number: 8080
+              number: 8000

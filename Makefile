@@ -7,12 +7,14 @@ build_gateway:
 
 build_images: build_subject build_gateway
 
-install_services:
+install_charts:
 	helm install subject-service ./helm/subject-service
+	helm install api-gateway ./helm/api-gateway
 	helm install ingress ./helm/ingress
 
-uninstall_services:
+uninstall_charts:
 	helm uninstall ingress
+	helm uninstall api-gateway
 	helm uninstall subject-service
 
 ### Terraform Command ###

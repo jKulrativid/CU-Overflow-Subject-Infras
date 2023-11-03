@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gateway-app
+  template:
+    metadata:
+      labels:
+        app: gateway-app
+    spec:
+      containers:
+      - name: gateway-app
+        image: cu-overflow/gateway-app:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 3001
+            name: rest-port
+        
+        env:
+        - name: GATEWAY_URL
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: GATEWAY_URL
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: DATABASE_URL
+        - name: FRONTEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: FRONTEND_URL
+        - name: SUJBECT_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: SUJBECT_SERVICE_URL
+        - name: FILE_SERVICE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: FILE_SERVICE_URL
+        - name: DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: DOMAIN
+        - name: GOOGLE_CLIENT_ID
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: GOOGLE_CLIENT_ID
+        - name: GOOGLE_CLIENT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: GOOGLE_CLIENT_SECRET
+        - name: JWT_ACCESS_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: JWT_ACCESS_SECRET
+        - name: JWT_REFRESH_SECRET
+          valueFrom:
+            configMapKeyRef:
+              name: api-gateway-config
+              key: JWT_REFRESH_SECRET

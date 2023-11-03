@@ -16,7 +16,7 @@ make build_images
 
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
-Set secret in 
+Set secret as described in the .yaml.template in each Helm Chart's template
 
 ## Install Nginx as Ingress Controller
 ```bash
@@ -26,10 +26,10 @@ helm install nginx-ingress ingress-nginx/ingress-nginx
 
 ## Install Services with Helm
 ```bash
-make install_services
+make install_charts
 ```
 
 ## To uninstall services, run
 ```bash
-make uninstall_services
+make uninstall_charts
 ```

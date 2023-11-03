@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: subject-app-service
+  labels:
+    app: subject-app-service
 spec:
   selector:
     app: subject-app
