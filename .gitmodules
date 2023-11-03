@@ -4,3 +4,9 @@
 [submodule "CU-Overflow-Subject-Service"]
 	path = CU-Overflow-Subject-Service
 	url = https://github.com/jKulrativid/CU-Overflow-Subject-Service
+[submodule "SA-Front-End"]
+	path = SA-Front-End
+	url = https://github.com/oatRatchanon/SA-Front-End.git
+[submodule "SW-Arch-File-Storage-Microservice"]
+	path = SW-Arch-File-Storage-Microservice
+	url = https://github.com/PongDev/SW-Arch-File-Storage-Microservice.git
