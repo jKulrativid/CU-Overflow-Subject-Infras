@@ -8,6 +8,7 @@
 - Helm
 - Make
 - Around 10Gib Disk Space for Persistent Volume in Master Node
+- MongoDB Atlas for API Gateway Auth Service
 
 ## Build All Images
 ```bash
