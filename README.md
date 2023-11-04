@@ -14,6 +14,8 @@
 ```bash
 make build_images
 ```
+#### Note:
+If you want to change web service (frontend) configuration, see '.env' file in SA-Front-End directory.
 
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
@@ -29,6 +31,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx
 ```bash
 make install_charts
 ```
+
+### You can reach the frontend at localhost (port 80)
 
 ## To uninstall services, run
 ```bash
