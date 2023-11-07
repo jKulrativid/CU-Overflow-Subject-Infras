@@ -1,0 +1,50 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage-class
+provisioner: kubernetes.io/fake-nfs
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-pv
+spec:
+  storageClassName: local-storage-class
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /run/desktop/mnt/host/c/pv
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: filestorage-db-pv
+spec:
+  storageClassName: local-storage-class
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /run/desktop/mnt/host/c/pv
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: subject-db
+spec:
+  storageClassName: local-storage-class
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /run/desktop/mnt/host/c/pv

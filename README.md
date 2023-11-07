@@ -21,6 +21,11 @@ If you want to change web service (frontend) configuration, see '.env' file in S
 #### It is surely a bad practice but it will be patched soon ^^.
 Set secret as described in the .yaml.template in each Helm Chart's template
 
+## Allocate Persistent Volumes
+```bash
+make install_pv
+```
+
 ## Install Nginx as Ingress Controller
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -37,4 +42,9 @@ make install_charts
 ## To uninstall services, run
 ```bash
 make uninstall_charts
+```
+
+## If you want to uninstall persistent volumes, (carefully run),
+```bash
+make uninstall_pv
 ```

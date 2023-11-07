@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: filestorage-app-service
+  labels:
+    app: filestorage-app-service
+spec:
+  selector:
+    app: filestorage-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: filestorage-minio-service
+  labels:
+    app: filestorage-minio-service
+spec:
+  selector:
+    app: filestorage-minio-app
+  ports:
+    - protocol: TCP
+      name: s3-port
+      port: 9000
+      targetPort: 9000
+    - protocol: TCP
+      name: console-port
+      port: 9001
+      targetPort: 9001
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: filestorage-db-service
+  labels:
+    app: filestorage-db-service
+spec:
+  selector:
+    app: filestorage-db
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

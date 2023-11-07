@@ -1,0 +1,176 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filestorage-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filestorage-app
+  template:
+    metadata:
+      labels:
+        app: filestorage-app
+    spec:
+      containers:
+      - name: filestorage-app
+        image: sw-arch-file-storage-microservice-app:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8000
+            name: api-port
+        
+        env:
+        - name: PORT
+          value: "8000"
+        - name: MINIO_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: MINIO_ENDPOINT
+        - name: MINIO_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: MINIO_BUCKET
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: MINIO_ACCESS_KEY
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: MINIO_SECRET_KEY
+        - name: SUBJECT_MICROSERVICE_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: SUBJECT_MICROSERVICE_ENDPOINT
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: DB_URL
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filestorage-minio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filestorage-minio-app
+  template:
+    metadata:
+      labels:
+        app: filestorage-minio-app
+    spec:
+      containers:
+      - name: filestorage-minio-app
+        image: quay.io/minio/minio:latest
+        command:
+        - /bin/bash
+        - -c
+        args: 
+        - minio server /data --console-address :9001
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 9000
+            name: s3-api-port
+          - containerPort: 9001
+            name: console-port
+        
+        env:
+        - name: MINIO_ROOT_USER
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: MINIO_ROOT_USER
+        - name: MINIO_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: MINIO_ROOT_PASSWORD
+
+        volumeMounts:
+        - mountPath: /data
+          name: minio-volume
+
+      volumes:
+        - name: minio-volume
+          persistentVolumeClaim:
+              claimName: minio-pvc
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filestorage-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filestorage-db
+  template:
+    metadata:
+      labels:
+        app: filestorage-db
+    spec:
+      containers:
+      - name: filestorage-db
+        image: postgres:latest
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 5432
+            name: postgres-port
+        
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: DB_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: DB_PASSWORD
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: filestorage-config
+              key: DB_NAME
+        
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: filestorage-db-pv
+
+      volumes:
+        - name: filestorage-db-pv
+          persistentVolumeClaim:
+              claimName: filestorage-db-pvc
