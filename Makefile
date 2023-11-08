@@ -5,6 +5,9 @@ build_subject:
 build_filestorage:
 	docker compose -f ./SW-Arch-File-Storage-Microservice/docker-compose.prod.yml build app
 
+build_post:
+	docker compose -f ./
+
 build_gateway:
 	docker compose -f ./API-Gateway-SA/docker-compose.yml build
 
@@ -33,9 +36,17 @@ uninstall_charts:
 	helm uninstall filestorage-service
 	helm uninstall subject-service
 
+init_submodules:
+	git submodule update --init --recursive
+
+update_submodules:
+	git pull --recurse-submodules
+
+### DEPRECATED ### 
 ### Terraform Command ###
 create_infras:
 	terraform -chdir=./terraform apply -auto-approve
 
 destroy_infras:
 	terraform -chdir=./terraform destroy -auto-approve
+### END DEPRECATED ###
