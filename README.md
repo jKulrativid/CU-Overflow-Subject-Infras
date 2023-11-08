@@ -8,7 +8,7 @@
 - Helm
 - Make
 - Around 10Gib Disk Space for Persistent Volume in Master Node
-- MongoDB Atlas for API Gateway Auth Service
+- MongoDB URI Atlas for API Gateway Auth Service
 
 ## Build All Images
 ```bash
@@ -21,9 +21,9 @@ If you want to change web service (frontend) configuration, see '.env' file in S
 #### It is surely a bad practice but it will be patched soon ^^.
 Set secret as described in the .yaml.template in each Helm Chart's template
 
-## Allocate Persistent Volumes
+## Install Common
 ```bash
-make install_pv
+make install_common
 ```
 
 ## Install Nginx as Ingress Controller
@@ -42,11 +42,7 @@ make install_charts
 ## To uninstall services, run
 ```bash
 make uninstall_charts
-```
-
-## If you want to uninstall persistent volumes, (carefully) run,
-```bash
-make uninstall_pv
+make uninstall_common
 ```
 
 # Updating

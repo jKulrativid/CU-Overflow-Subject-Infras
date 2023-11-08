@@ -11,3 +11,20 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+
+---
+
+# Bad Practice! : expose service for topic service due to uri hardcode
+apiVersion: v1
+kind: Service
+metadata:
+  name: subject-service
+  labels:
+    app: subject-service
+spec:
+  selector:
+    app: subject-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

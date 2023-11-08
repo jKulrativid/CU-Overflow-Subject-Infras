@@ -1,0 +1,53 @@
+# Bad Practice! : expose service with improper name due to hardcode
+apiVersion: v1
+kind: Service
+metadata:
+  name: topic-backend
+  labels:
+    app: topic-backend
+spec:
+  selector:
+    app: topic-app
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
+
+---
+
+# Bad Practic! : expose service with improper name due to hardcode
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  labels:
+    app: rabbitMQ
+spec:
+  selector:
+    app: topic-rabbitmq
+  ports:
+    - protocol: TCP
+      name: queue-port
+      port: 5672
+      targetPort: 5672
+    - protocol: TCP
+      name: management-port
+      port: 15672
+      targetPort: 15672
+
+---
+
+# Bad Practic! : expose service with improper name due to hardcode
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  labels:
+    app: mongo
+spec:
+  selector:
+    app: topic-db
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017

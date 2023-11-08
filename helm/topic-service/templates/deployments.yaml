@@ -1,0 +1,214 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-app
+  template:
+    metadata:
+      labels:
+        app: topic-app
+    spec:
+      containers:
+      - name: topic-app
+        image: polapob/topic-service:2.0
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 4000
+            name: api-port
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-worker
+  template:
+    metadata:
+      labels:
+        app: topic-worker
+    spec:
+      containers:
+      - name: topic-worker
+        image: cu-overflow/topic-worker:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-rabbitmq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-rabbitmq
+  template:
+    metadata:
+      labels:
+        app: topic-rabbitmq
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3.13-rc-management
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+          - containerPort: 5672
+            name: listener-port
+          - containerPort: 15672
+            name: management-port
+        
+        volumeMounts:
+        - mountPath: /var/lib/rabbitmq
+          name: topic-rabbitmq-data
+        - mountPath: /var/log/rabbitmq
+          name: topic-rabbitmq-log
+
+      volumes:
+        - name: topic-rabbitmq-data
+          persistentVolumeClaim:
+              claimName: topic-rabbitmq-data-pvc
+        - name: topic-rabbitmq-log
+          persistentVolumeClaim:
+              claimName: topic-rabbitmq-log-pvc
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-db
+  template:
+    metadata:
+      labels:
+        app: topic-db
+    spec:
+      containers:
+      - name: topic-db
+        image: mongo:7.0.1
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 27017
+            name: connection-port
+        
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: MONGO_INITDB_ROOT_USERNAME
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: MONGO_INITDB_ROOT_PASSWORD
+        - name: MONGO_INITDB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: MONGO_INITDB_DATABASE
+        - name: MONGO_INIT_DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: MONGO_INIT_DB_USERNAME
+        - name: MONGO_INIT_DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: MONGO_INIT_DB_PASSWORD
+        
+        volumeMounts:
+        - mountPath: /data/db
+          name: topic-db-volume
+
+      volumes:
+        - name: topic-db-volume
+          persistentVolumeClaim:
+              claimName: topic-db-pvc
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: topic-mongodb-express-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: topic-mongodb-express
+  template:
+    metadata:
+      labels:
+        app: topic-mongodb-express
+    spec:
+      containers:
+      - name: topic-app
+        image: mongo-express:1.0.0-alpha
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8081
+            name: web-port
+        
+        env:
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: ME_CONFIG_MONGODB_ADMINUSERNAME
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: ME_CONFIG_MONGODB_ADMINUSERNAME
+        - name: ME_CONFIG_MONGODB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: topic-service-config
+              key: ME_CONFIG_MONGODB_URL
