@@ -48,3 +48,22 @@ make uninstall_charts
 ```bash
 make uninstall_pv
 ```
+
+# Updating
+
+## First, update each submodules
+```bash
+make update_submodules
+```
+
+
+## Then rebuild all images
+```bash
+make build_images
+```
+
+## Lastly
+```bash
+make uninstall_charts
+make install_charts
+```
