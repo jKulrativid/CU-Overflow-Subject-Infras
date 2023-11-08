@@ -21,6 +21,7 @@ uninstall_pv:
 
 install_charts:
 	helm install subject-service ./helm/subject-service
+	helm install filestorage-service ./helm/file-service
 	helm install api-gateway ./helm/api-gateway
 	helm install web ./helm/web-service
 	helm install ingress ./helm/ingress
@@ -29,6 +30,7 @@ uninstall_charts:
 	helm uninstall ingress
 	helm uninstall web
 	helm uninstall api-gateway
+	helm uninstall filestorage-service
 	helm uninstall subject-service
 
 ### Terraform Command ###
