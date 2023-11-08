@@ -44,7 +44,7 @@ make install_charts
 make uninstall_charts
 ```
 
-## If you want to uninstall persistent volumes, (carefully run),
+## If you want to uninstall persistent volumes, (carefully) run,
 ```bash
 make uninstall_pv
 ```
@@ -55,7 +55,6 @@ make uninstall_pv
 ```bash
 make update_submodules
 ```
-
 
 ## Then rebuild all images
 ```bash
