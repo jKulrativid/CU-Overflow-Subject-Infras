@@ -41,7 +41,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx
 make install_charts
 ```
 
-## Then, run Prisma migrator
+## After the filestorage db finished installation, run Prisma migrator
 ```bash
 make migrate_db
 ```
