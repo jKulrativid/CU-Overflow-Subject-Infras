@@ -10,6 +10,10 @@
 - Around 10Gib Disk Space for Persistent Volume in Master Node
 - MongoDB URI Atlas for API Gateway Auth Service
 
+## Setup Gateway Config Before Building Image
+#### Since we accentially hardcode gateway's dependency uri in JS file
+### If you need to change service name, please look API-Gateway-SA/src/common/constants
+
 ## Build All Images
 ```bash
 make build_images
@@ -37,7 +41,16 @@ helm install nginx-ingress ingress-nginx/ingress-nginx
 make install_charts
 ```
 
-### You can reach the frontend at localhost (port 80)
+## Then, run Prisma migrator
+```bash
+make migrate_db
+```
+and after migration is finished (the website is properly running), run
+```bash
+make finish_migrate_db
+```
+
+## Finally, you can reach the frontend at localhost (port 80)
 
 ## To uninstall services, run
 ```bash

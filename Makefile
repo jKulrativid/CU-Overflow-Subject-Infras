@@ -5,6 +5,9 @@ build_subject:
 build_filestorage:
 	docker compose -f ./SW-Arch-File-Storage-Microservice/docker-compose.prod.yml build app
 
+build_filestorage_migrator:
+	docker compose -f ./SW-Arch-File-Storage-Microservice-Migrator/docker-compose.prod.yml build migrator
+
 build_topic:
 	docker compose -f ./sw-arch-topic-worker/docker-compose.yml build worker
 
@@ -14,7 +17,7 @@ build_gateway:
 build_web:
 	docker compose -f ./SA-Front-End/docker-compose.yml build
 
-build_images: build_subject build_filestorage build_topic build_gateway build_web
+build_images: build_subject build_filestorage build_filestorage_migrator build_topic build_gateway build_web
 
 install_common:
 	helm install common ./helm/common
@@ -37,6 +40,14 @@ uninstall_charts:
 	helm uninstall topic-service
 	helm uninstall filestorage-service
 	helm uninstall subject-service
+
+migrate_db:
+	kubectl apply -f ./k8s-file/config-map-secret.yaml
+	kubectl apply -f ./k8s-file/db-migrator.yaml
+
+finish_migrate_db:
+	kubectl delete -f ./k8s-file/config-map-secret.yaml
+	kubectl delete -f ./k8s-file/db-migrator.yaml
 
 init_submodules:
 	git submodule update --init --recursive

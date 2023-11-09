@@ -43,11 +43,11 @@ spec:
             configMapKeyRef:
               name: api-gateway-config
               key: FRONTEND_URL
-        - name: SUJBECT_SERVICE_URL
+        - name: SUBJECT_SERVICE_URL
           valueFrom:
             configMapKeyRef:
               name: api-gateway-config
-              key: SUJBECT_SERVICE_URL
+              key: SUBJECT_SERVICE_URL
         - name: FILE_SERVICE_URL
           valueFrom:
             configMapKeyRef:

@@ -14,7 +14,7 @@ spec:
           service:
             name: gateway-app-service
             port:
-              number: 8000
+              number: 3001
       - path: /
         pathType: Prefix
         backend:

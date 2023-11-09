@@ -16,3 +16,6 @@
 [submodule "sw-arch-topic-worker"]
 	path = sw-arch-topic-worker
 	url = https://github.com/Polapob/sw-arch-topic-worker.git
+[submodule "SW-Arch-File-Storage-Microservice-Migrator"]
+	path = SW-Arch-File-Storage-Microservice-Migrator
+	url = https://github.com/jKulrativid/SW-Arch-File-Storage-Microservice-Migrator.git
