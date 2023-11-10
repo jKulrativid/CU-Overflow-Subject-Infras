@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: prisma-migrator
+spec:
+  template:
+    spec:
+      containers:
+      - name: prisma-migrator
+        image: cu-overflow/filestorage-db-migrator:latest
+        command: ["go", "run", "github.com/steebchen/prisma-client-go", "migrate", "deploy"]
+        imagePullPolicy: Never
+        env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: prisma-migrator-config
+              key: DB_URL
+      restartPolicy: Never
