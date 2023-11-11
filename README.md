@@ -3,6 +3,7 @@
 # Installation
 
 ## Required
+- Ubuntu Instance with >2 vCPU Cores and > 2GiB of RAM
 - Docker
 - Kubernetes
 - Helm
