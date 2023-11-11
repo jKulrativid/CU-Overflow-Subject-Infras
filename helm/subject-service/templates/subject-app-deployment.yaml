@@ -13,7 +13,6 @@ spec:
         app: subject-app
     spec:
       containers:
-      containers:
       - name: subject-app
         image: cu-overflow/subject:latest
         imagePullPolicy: Never

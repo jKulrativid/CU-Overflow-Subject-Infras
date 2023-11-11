@@ -4,8 +4,10 @@ metadata:
   name: minio-pvc
 spec:
   storageClassName: local-storage-class
+  volumeName: minio-pv
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 2Gi
@@ -18,8 +20,10 @@ metadata:
   name: filestorage-db-pvc
 spec:
   storageClassName: local-storage-class
+  volumeName: filestorage-db-pv
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 2Gi

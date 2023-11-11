@@ -13,7 +13,6 @@ spec:
         app: web
     spec:
       containers:
-      containers:
       - name: web
         image: cu-overflow/web:latest
         imagePullPolicy: Never

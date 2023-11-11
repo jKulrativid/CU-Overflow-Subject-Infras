@@ -4,8 +4,10 @@ metadata:
   name: topic-rabbitmq-log-pvc
 spec:
   storageClassName: local-storage-class
+  volumeName: rabbitmq-log
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 500Mi
@@ -18,8 +20,10 @@ metadata:
   name: topic-rabbitmq-data-pvc
 spec:
   storageClassName: local-storage-class
+  volumeName: rabbitmq-data
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 500Mi
@@ -32,8 +36,10 @@ metadata:
   name: topic-db-pvc
 spec:
   storageClassName: local-storage-class
+  volumeName: topic-mongodb
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
