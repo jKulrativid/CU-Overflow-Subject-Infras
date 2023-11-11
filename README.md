@@ -10,10 +10,15 @@
 - Around 10Gib Disk Space for Persistent Volume in Master Node
 - MongoDB URI Atlas for API Gateway Auth Service
 
-## Setup Web's Vite Gateway URI Before Building Image
+## First, pull submodules
+```bash
+make init_submodules
+```
+
+## Setup Web's Vite Gateway URI before building image
 Go to ./SA-Front-End and change value of .env to Nginx Ingress Controller's URL
 
-## Setup Gateway Config Before Building Image
+## Setup Gateway config before building image
 Since we accentially hardcode gateway's dependency uri in JS file
 If you need to change service name, please look API-Gateway-SA/src/common/constants
 
