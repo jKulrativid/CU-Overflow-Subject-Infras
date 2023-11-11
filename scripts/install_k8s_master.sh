@@ -50,6 +50,9 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.
 sudo apt-get update
 sudo apt-get install helm
 
+## Install Helm Dashboard
+helm plugin install https://github.com/komodorio/helm-dashboard.git
+
 ## Install Docker Compose
 mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
