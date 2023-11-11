@@ -53,7 +53,7 @@ init_submodules:
 	git submodule update --init --recursive
 
 update_submodules:
-	git pull --recurse-submodules
+	git submodule update --remote --recursive
 
 ### DEPRECATED ### 
 ### Terraform Command ###
