@@ -40,6 +40,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
 
+## Install Docker Compose
+mkdir -p ~/.docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
+
 ## Install Make
 sudo apt install make
 
@@ -53,12 +58,7 @@ sudo apt-get install helm
 ## Install Helm Dashboard
 helm plugin install https://github.com/komodorio/helm-dashboard.git
 
-## Install Docker Compose
-mkdir -p ~/.docker/cli-plugins/
-curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-chmod +x ~/.docker/cli-plugins/docker-compose
-
-## Join Worker Nodes
+## Create Join Worker Nodes Command
 kubeadm token create --print-join-command
 ## And copy printed command then run on worker nodes
 
@@ -66,4 +66,4 @@ kubeadm token create --print-join-command
 helm dashboard --no-browser --bind=0.0.0.0
 
 ## Allow Master Node Deployment
-kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule
+# kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule
