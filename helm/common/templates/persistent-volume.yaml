@@ -3,7 +3,6 @@ kind: PersistentVolume
 metadata:
   name: subject-db
 spec:
-  storageClassName: local-storage-class
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   capacity:
@@ -21,7 +20,6 @@ kind: PersistentVolume
 metadata:
   name: minio-pv
 spec:
-  storageClassName: local-storage-class
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   capacity:
@@ -41,7 +39,6 @@ kind: PersistentVolume
 metadata:
   name: filestorage-db-pv
 spec:
-  storageClassName: local-storage-class
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   capacity:
@@ -59,7 +56,6 @@ kind: PersistentVolume
 metadata:
   name: rabbitmq-log
 spec:
-  storageClassName: local-storage-class
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   capacity:
@@ -77,7 +73,6 @@ kind: PersistentVolume
 metadata:
   name: rabbitmq-data
 spec:
-  storageClassName: local-storage-class
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   capacity:
@@ -95,7 +90,6 @@ kind: PersistentVolume
 metadata:
   name: topic-mongodb
 spec:
-  storageClassName: local-storage-class
   persistentVolumeReclaimPolicy: Retain
   volumeMode: Filesystem
   capacity:
