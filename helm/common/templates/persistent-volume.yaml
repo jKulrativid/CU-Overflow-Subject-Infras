@@ -12,7 +12,7 @@ spec:
     - ReadWriteMany
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f
+    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0364376c9187d5150
 
 ---
 
@@ -32,7 +32,7 @@ spec:
     - tls
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f
+    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0ee262f21b59b3ee7
 
 ---
 
@@ -50,7 +50,7 @@ spec:
     - ReadWriteMany
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f
+    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0cc3266c7d707fd83
 
 ---
 
@@ -68,7 +68,7 @@ spec:
     - ReadWriteMany
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f
+    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0998d7795783dccc8
 
 ---
 
@@ -86,7 +86,7 @@ spec:
     - ReadWriteMany
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f
+    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-04220fbc2bd52a41b
 
 ---
 
@@ -104,4 +104,4 @@ spec:
     - ReadWriteMany
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f
+    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0658ce78f2b2d00a1
