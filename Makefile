@@ -20,7 +20,7 @@ build_gateway:
 	docker push localhost:5000/gateway-app
 
 build_web:
-	docker build ./SA-Front-End/. -t localhost:5000/web
+	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=http://${PUBLIC_IP}:80" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t localhost:5000/web
 	docker push localhost:5000/web
 
 build_images: build_subject build_filestorage build_filestorage_migrator build_topic build_gateway build_web

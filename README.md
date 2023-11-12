@@ -21,6 +21,11 @@ make init_submodules
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
 ```
 
+## Set envs
+```bash
+export PUBLIC_IP=<YOUR IP.v4 Address>
+```
+
 ## Setup Web's Vite Gateway URI before building image
 Go to ./SA-Front-End and change value of .env to Nginx Ingress Controller's URL
 
