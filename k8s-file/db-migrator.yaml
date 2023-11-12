@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: prisma-migrator
-        image: localhost:5000/filestorage-migrator:latest
+        image: jkulrativ/filestorage-migrator:latest
         command: ["go", "run", "github.com/steebchen/prisma-client-go", "migrate", "deploy"]
         imagePullPolicy: Never
         env:

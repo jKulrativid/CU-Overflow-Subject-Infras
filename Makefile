@@ -48,11 +48,9 @@ uninstall_charts:
 	helm uninstall subject-service
 
 migrate_db:
-	kubectl apply -f ./k8s-file/config-map-secret.yaml
 	kubectl apply -f ./k8s-file/db-migrator.yaml
 
 finish_migrate_db:
-	kubectl delete -f ./k8s-file/config-map-secret.yaml
 	kubectl delete -f ./k8s-file/db-migrator.yaml
 
 init_submodules:

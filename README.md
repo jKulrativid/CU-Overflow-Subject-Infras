@@ -11,41 +11,6 @@
 - Around 10Gib Disk Space for Persistent Volume in Master Node
 - MongoDB URI Atlas for API Gateway Auth Service
 
-## First, pull submodules
-```bash
-make init_submodules
-```
-
-## Create Local Registry
-```bash
-docker run -d -p 5000:5000 --restart=always --name registry registry:2
-```
-
-## Then Config K8s for Local Registry
-```bash
-sudo nano /etc/docker/daemon.json
-```
-## And Add
-```
-{
-  "insecure-registries": ["localhost:5000"]
-}
-```
-
-## Set envs
-```bash
-export PUBLIC_IP=<YOUR IP.v4 Address>
-```
-
-## Setup Gateway config before building image
-Since we accentially hardcode gateway's dependency uri in JS file
-If you need to change service name, please look API-Gateway-SA/src/common/constants
-
-## Build All Images
-```bash
-make build_images
-```
-
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
 Place config-map (secret) in ./helm/common/template
@@ -70,6 +35,7 @@ make install_charts
 ```bash
 make migrate_db
 ```
+
 and after migration is finished (the website is properly running), run
 ```bash
 make finish_migrate_db
