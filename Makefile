@@ -1,27 +1,27 @@
 ### Kubernetes Command ###
 build_subject:
-	docker build ./CU-Overflow-Subject-Service/. -t localhost:5000/subject-app
-	docker push localhost:5000/subject-app
+	docker build ./CU-Overflow-Subject-Service/. -t localhost:5000/subject-app:latest
+	docker push localhost:5000/subject-app:latest
 
 build_filestorage:
-	docker build ./SW-Arch-File-Storage-Microservice/. -t localhost:5000/filestorage-app
-	docker push localhost:5000/filestorage-app
+	docker build ./SW-Arch-File-Storage-Microservice/. -t localhost:5000/filestorage-app:latest
+	docker push localhost:5000/filestorage-app:latest
 
 build_filestorage_migrator:
-	docker build ./SW-Arch-File-Storage-Microservice-Migrator/. -t localhost:5000/filestorage-migrator
-	docker push localhost:5000/filestorage-migrator
+	docker build ./SW-Arch-File-Storage-Microservice-Migrator/. -t localhost:5000/filestorage-migrator:latest
+	docker push localhost:5000/filestorage-migrator:latest
 
 build_topic:
-	docker build ./sw-arch-topic-worker/. -t localhost:5000/topic-worker
-	docker push localhost:5000/topic-worker
+	docker build ./sw-arch-topic-worker/. -t localhost:5000/topic-worker:latest
+	docker push localhost:5000/topic-worker:latest
 
 build_gateway:
-	docker build ./API-Gateway-SA/. -t localhost:5000/gateway-app
-	docker push localhost:5000/gateway-app
+	docker build ./API-Gateway-SA/. -t localhost:5000/gateway-app:latest
+	docker push localhost:5000/gateway-app:latest
 
 build_web:
-	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=http://${PUBLIC_IP}:80" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t localhost:5000/web
-	docker push localhost:5000/web
+	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=http://${PUBLIC_IP}:80" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t localhost:5000/web:latest
+	docker push localhost:5000/web:latest
 
 build_images: build_subject build_filestorage build_filestorage_migrator build_topic build_gateway build_web
 

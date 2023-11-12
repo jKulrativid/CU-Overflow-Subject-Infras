@@ -16,9 +16,20 @@
 make init_submodules
 ```
 
-## Create Local Repository
+## Create Local Registry
 ```bash
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
+```
+
+## Then Config K8s for Local Registry
+```bash
+sudo nano /etc/docker/daemon.json
+```
+## And Add
+```
+{
+  "insecure-registries": ["localhost:5000"]
+}
 ```
 
 ## Set envs
