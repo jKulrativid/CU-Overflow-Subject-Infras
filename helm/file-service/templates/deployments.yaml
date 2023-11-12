@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: filestorage-app
-        image: localhost:5000/filestorage-app:latest
+        image: jkulrativ/filestorage-app:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:

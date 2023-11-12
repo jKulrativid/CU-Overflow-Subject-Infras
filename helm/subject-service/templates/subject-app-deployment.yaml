@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: subject-app
-        image: localhost:5000/subject-app:latest
+        image: jkulrativ/subject-app:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:

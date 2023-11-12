@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: topic-worker
-        image: localhost:5000/topic-worker:latest
+        image: jkulrativ/topic-worker:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:

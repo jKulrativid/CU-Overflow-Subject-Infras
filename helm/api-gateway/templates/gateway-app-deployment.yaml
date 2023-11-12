@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gateway-app
-        image: cu-overflow/gateway-app:latest
+        image: jkulrativ/gateway-app:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:

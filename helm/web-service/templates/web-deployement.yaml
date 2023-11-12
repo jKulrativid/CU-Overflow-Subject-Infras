@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: localhost:5000/web:latest
+        image: jkulrativ/web:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
