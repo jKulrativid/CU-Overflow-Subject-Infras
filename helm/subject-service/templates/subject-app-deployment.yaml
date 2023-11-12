@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: subject-app
-        image: cu-overflow/subject:latest
-        imagePullPolicy: Never
+        image: localhost:5000/subject-app:latest
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             memory: "128Mi"

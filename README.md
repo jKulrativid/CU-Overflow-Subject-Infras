@@ -16,6 +16,11 @@
 make init_submodules
 ```
 
+## Create Local Repository
+```bash
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+```
+
 ## Setup Web's Vite Gateway URI before building image
 Go to ./SA-Front-End and change value of .env to Nginx Ingress Controller's URL
 

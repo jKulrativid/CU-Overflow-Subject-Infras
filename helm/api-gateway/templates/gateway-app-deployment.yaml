@@ -15,7 +15,7 @@ spec:
       containers:
       - name: gateway-app
         image: cu-overflow/gateway-app:latest
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             memory: "128Mi"

@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: filestorage-app
-        image: sw-arch-file-storage-microservice-app:latest
-        imagePullPolicy: Never
+        image: localhost:5000/filestorage-app:latest
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             memory: "128Mi"

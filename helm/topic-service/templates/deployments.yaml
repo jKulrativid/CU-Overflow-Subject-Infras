@@ -44,8 +44,8 @@ spec:
     spec:
       containers:
       - name: topic-worker
-        image: cu-overflow/topic-worker:latest
-        imagePullPolicy: Never
+        image: localhost:5000/topic-worker:latest
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             memory: "128Mi"

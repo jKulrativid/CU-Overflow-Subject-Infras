@@ -1,21 +1,27 @@
 ### Kubernetes Command ###
 build_subject:
-	docker compose -f ./CU-Overflow-Subject-Service/docker-compose.yaml build subject-service
+	docker build ./CU-Overflow-Subject-Service/. -t localhost:5000/subject-app
+	docker push localhost:5000/subject-app
 
 build_filestorage:
-	docker compose -f ./SW-Arch-File-Storage-Microservice/docker-compose.prod.yml build app
+	docker build ./SW-Arch-File-Storage-Microservice/. -t localhost:5000/filestorage-app
+	docker push localhost:5000/filestorage-app
 
 build_filestorage_migrator:
-	docker compose -f ./SW-Arch-File-Storage-Microservice-Migrator/docker-compose.prod.yml build migrator
+	docker build ./SW-Arch-File-Storage-Microservice-Migrator/. -t localhost:5000/filestorage-migrator
+	docker push localhost:5000/filestorage-migrator
 
 build_topic:
-	docker compose -f ./sw-arch-topic-worker/docker-compose.yml build worker
+	docker build ./sw-arch-topic-worker/. -t localhost:5000/topic-worker
+	docker push localhost:5000/topic-worker
 
 build_gateway:
-	docker compose -f ./API-Gateway-SA/docker-compose.yml build
+	docker build ./API-Gateway-SA/. -t localhost:5000/gateway-app
+	docker push localhost:5000/gateway-app
 
 build_web:
-	docker compose -f ./SA-Front-End/docker-compose.yml build
+	docker build ./SA-Front-End/. -t localhost:5000/web
+	docker push localhost:5000/web
 
 build_images: build_subject build_filestorage build_filestorage_migrator build_topic build_gateway build_web
 
