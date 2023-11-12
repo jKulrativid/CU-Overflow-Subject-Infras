@@ -9,9 +9,9 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  csi:
-    driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0364376c9187d5150
+  nfs:
+    path: /pv/subject-db
+    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -28,9 +28,9 @@ spec:
     - ReadWriteMany
   mountOptions:
     - tls
-  csi:
-    driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0ee262f21b59b3ee7
+  nfs:
+    path: /pv/minio
+    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -45,9 +45,9 @@ spec:
     storage: 2Gi
   accessModes:
     - ReadWriteMany
-  csi:
-    driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0cc3266c7d707fd83
+  nfs:
+    path: /pv/filestorage-db
+    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -62,9 +62,9 @@ spec:
     storage: 500Mi
   accessModes:
     - ReadWriteMany
-  csi:
-    driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0998d7795783dccc8
+  nfs:
+    path: /pv/rabbitmq/log
+    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -79,9 +79,9 @@ spec:
     storage: 500Mi
   accessModes:
     - ReadWriteMany
-  csi:
-    driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-04220fbc2bd52a41b
+  nfs:
+    path: /pv/rabbitmq/data
+    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -96,6 +96,6 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  csi:
-    driver: efs.csi.aws.com
-    volumeHandle: fs-0c9dcc2475f10ae6f:/fsap-0658ce78f2b2d00a1
+  nfs:
+    path: /pv/topic-db
+    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
