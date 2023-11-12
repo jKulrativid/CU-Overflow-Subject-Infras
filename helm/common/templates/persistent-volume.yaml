@@ -9,6 +9,9 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - hard
+    - nfsvers=4.1
   nfs:
     path: /pv/subject-db
     server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
@@ -27,7 +30,8 @@ spec:
   accessModes:
     - ReadWriteMany
   mountOptions:
-    - tls
+    - hard
+    - nfsvers=4.1
   nfs:
     path: /pv/minio
     server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
@@ -45,6 +49,9 @@ spec:
     storage: 2Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - hard
+    - nfsvers=4.1
   nfs:
     path: /pv/filestorage-db
     server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
@@ -62,6 +69,9 @@ spec:
     storage: 500Mi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - hard
+    - nfsvers=4.1
   nfs:
     path: /pv/rabbitmq/log
     server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
@@ -79,6 +89,9 @@ spec:
     storage: 500Mi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - hard
+    - nfsvers=4.1
   nfs:
     path: /pv/rabbitmq/data
     server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
@@ -96,6 +109,9 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - hard
+    - nfsvers=4.1
   nfs:
     path: /pv/topic-db
     server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
