@@ -26,9 +26,6 @@ docker run -d -p 5000:5000 --restart=always --name registry registry:2
 export PUBLIC_IP=<YOUR IP.v4 Address>
 ```
 
-## Setup Web's Vite Gateway URI before building image
-Go to ./SA-Front-End and change value of .env to Nginx Ingress Controller's URL
-
 ## Setup Gateway config before building image
 Since we accentially hardcode gateway's dependency uri in JS file
 If you need to change service name, please look API-Gateway-SA/src/common/constants
@@ -37,12 +34,10 @@ If you need to change service name, please look API-Gateway-SA/src/common/consta
 ```bash
 make build_images
 ```
-#### Note:
-If you want to change web service (frontend) configuration, see '.env' file in SA-Front-End directory.
 
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
-Set secret as described in the .yaml.template in each Helm Chart's template
+Place config-map (secret) in ./helm/common/template
 
 ## Install Common
 ```bash
