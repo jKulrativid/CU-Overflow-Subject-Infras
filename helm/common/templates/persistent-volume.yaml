@@ -13,8 +13,8 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /pv/subject-db
-    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
+    path: /
+    server: fs-04c306149824e561d.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -33,8 +33,8 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /pv/minio
-    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
+    path: /
+    server: fs-0f5db71c21b0d36bd.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -53,8 +53,8 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /pv/filestorage-db
-    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
+    path: /
+    server: fs-0ef5ae3a085579ce6.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -73,8 +73,8 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /pv/rabbitmq/log
-    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
+    path: /
+    server: fs-0e82938b8d854e6c6.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -93,8 +93,8 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /pv/rabbitmq/data
-    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
+    path: /
+    server: fs-0d816449d2c0281a7.efs.us-east-1.amazonaws.com
 
 ---
 
@@ -113,5 +113,5 @@ spec:
     - hard
     - nfsvers=4.1
   nfs:
-    path: /pv/topic-db
-    server: fs-0c9dcc2475f10ae6f.efs.us-east-1.amazonaws.com
+    path: /
+    server: fs-0baaf0d7bbde4a53c.efs.us-east-1.amazonaws.com
