@@ -3,7 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: subject-db-pvc
 spec:
-  storageClassName: local-storage-class
   volumeName: subject-db
   volumeMode: Filesystem
   accessModes:

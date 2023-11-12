@@ -1,3 +1,7 @@
+## Install Basics
+sudo apt install nfs-common
+sudo apt install make
+
 ## Install Kubernetes
 sudo hostnamectl set-hostname master
 
@@ -44,9 +48,6 @@ kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube
 mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
-
-## Install Make
-sudo apt install make
 
 ## Install Helm
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null

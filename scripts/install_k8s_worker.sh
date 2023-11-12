@@ -1,3 +1,7 @@
+## Install Common
+sudo apt install nfs-common make
+
+## Install Kubernetes
 sudo hostnamectl set-hostname worker-x
 
 sudo apt-get update
