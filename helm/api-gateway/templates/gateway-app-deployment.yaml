@@ -15,7 +15,7 @@ spec:
       containers:
       - name: gateway-app
         image: jkulrativ/gateway-app:latest
-        ImagePullPolicy: Always
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "128Mi"

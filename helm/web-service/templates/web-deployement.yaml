@@ -15,7 +15,7 @@ spec:
       containers:
       - name: web
         image: jkulrativ/web:latest
-        ImagePullPolicy: Always
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "256Mi"

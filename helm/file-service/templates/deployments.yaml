@@ -15,7 +15,7 @@ spec:
       containers:
       - name: filestorage-app
         image: jkulrativ/filestorage-app:latest
-        ImagePullPolicy: Always
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "128Mi"
@@ -80,7 +80,7 @@ spec:
       containers:
       - name: filestorage-minio-app
         image: quay.io/minio/minio:latest
-        ImagePullPolicy: Always
+        imagePullPolicy: Always
         command:
         - /bin/bash
         - -c
