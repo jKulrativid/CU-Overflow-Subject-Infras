@@ -20,7 +20,7 @@ build_gateway:
 	docker push jkulrativ/gateway-app:latest
 
 build_web:
-	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=http://${PUBLIC_IP}:8000" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t jkulrativ/web
+	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=https://${PUBLIC_IP}:8000" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t jkulrativ/web
 	docker push jkulrativ/web:latest
 
 build_images: build_subject build_filestorage build_filestorage_migrator build_topic build_gateway build_web

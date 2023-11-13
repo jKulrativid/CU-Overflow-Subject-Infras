@@ -17,6 +17,16 @@ export PUBLIC_IP=
 export CERT_KEY_PASSWORD=
 ```
 
+## Deploy Cert Manager
+```bash
+helm upgrade --install --wait --timeout 15m \
+  --namespace cert-manager --create-namespace \
+  --repo https://charts.jetstack.io cert-manager cert-manager \
+  --values - <<EOF
+installCRDs: true
+EOF
+```
+
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
 Place config-map (secret) in ./helm/common/template
@@ -25,6 +35,19 @@ Place config-map (secret) in ./helm/common/template
 ```bash
 make gen_cert
 make read_cert
+```
+
+## Create Cluster Issue
+```bash
+kubectl apply -n cert-manager -f - <<EOF
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ca-issuer
+spec:
+  ca:
+    secretName: ingress-cert
+EOF
 ```
 
 ## Install Common
@@ -52,8 +75,6 @@ and after migration is finished (the website is properly running), run
 ```bash
 make finish_migrate_db
 ```
-
-
 
 ## Finally, run
 ```bash
