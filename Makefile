@@ -29,7 +29,7 @@ install_common:
 	helm install common ./helm/common
 
 upgrade_common:
-	helm upgrade common ./helm/common
+	helm upgrade common ./helm/common --reset-values
 
 uninstall_common:
 	helm uninstall common
@@ -43,12 +43,12 @@ install_charts:
 	helm install ingress ./helm/ingress
 
 upgrade_charts:
-	helm upgrade subject-service ./helm/subject-service
-	helm upgrade filestorage-service ./helm/file-service
-	helm upgrade topic-service ./helm/topic-service
-	helm upgrade api-gateway ./helm/api-gateway
-	helm upgrade web ./helm/web-service
-	helm upgrade ingress ./helm/ingress
+	helm upgrade subject-service ./helm/subject-service --reset-values
+	helm upgrade filestorage-service ./helm/file-service --reset-values
+	helm upgrade topic-service ./helm/topic-service --reset-values
+	helm upgrade api-gateway ./helm/api-gateway --reset-values
+	helm upgrade web ./helm/web-service --reset-values
+	helm upgrade ingress ./helm/ingress --reset-values
 
 uninstall_charts:
 	helm uninstall ingress

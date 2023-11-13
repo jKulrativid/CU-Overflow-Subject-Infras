@@ -41,28 +41,18 @@ and after migration is finished (the website is properly running), run
 make finish_migrate_db
 ```
 
-## Finally, you can reach the frontend at localhost (port 80)
+
+
+## Finally, run
+```bash
+iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 8000
+kubectl port-forward service/nginx-ingress-ingress-nginx-controller 8000:80 --address 0.0.0.0
+```
+
+## You can reach the frontend at localhost (port 80)
 
 ## To uninstall services, run
 ```bash
 make uninstall_charts
 make uninstall_common
-```
-
-# Updating
-
-## First, update each submodules
-```bash
-make update_submodules
-```
-
-## Then rebuild all images
-```bash
-make build_images
-```
-
-## Lastly
-```bash
-make uninstall_charts
-make install_charts
 ```

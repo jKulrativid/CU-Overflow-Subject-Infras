@@ -9,7 +9,6 @@ spec:
       - name: prisma-migrator
         image: jkulrativ/filestorage-migrator:latest
         command: ["go", "run", "github.com/steebchen/prisma-client-go", "migrate", "deploy"]
-        imagePullPolicy: Never
         env:
         - name: DB_URL
           valueFrom:
