@@ -15,7 +15,7 @@ spec:
       containers:
       - name: subject-app
         image: jkulrativ/subject-app:latest
-        imagePullPolicy: IfNotPresent
+        ImagePullPolicy: Always
         resources:
           requests:
             memory: "128Mi"

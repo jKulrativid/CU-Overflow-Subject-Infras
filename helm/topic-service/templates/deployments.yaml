@@ -15,6 +15,7 @@ spec:
       containers:
       - name: topic-app
         image: polapob/topic-service:2.0
+        ImagePullPolicy: Always
         resources:
           requests:
             memory: "128Mi"
@@ -45,7 +46,7 @@ spec:
       containers:
       - name: topic-worker
         image: jkulrativ/topic-worker:latest
-        imagePullPolicy: IfNotPresent
+        ImagePullPolicy: Always
         resources:
           requests:
             memory: "128Mi"
