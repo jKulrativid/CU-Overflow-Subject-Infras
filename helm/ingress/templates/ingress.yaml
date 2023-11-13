@@ -9,8 +9,7 @@ spec:
   tls:
   - secretName: ingress-cert
   rules:
-  - host: cu-overflow.shop
-    http:
+  - http:
       paths:
       - path: /api
         pathType: Prefix
