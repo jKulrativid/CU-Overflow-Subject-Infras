@@ -75,7 +75,7 @@ gen_cert:
 	openssl req -x509 -newkey rsa:2048 -days 3650 -keyout certs/ingress-tls.key -out certs/ingress-tls.crt -nodes -subj "/C=TH/ST=BangkokMetropolitan/L=Bangkok/O=CU-Overflow/OU=SiteReliability/CN=Release-1.0"
 
 read_cert_secret:
-	kubectl create secret tls ingress-cert --key=certs/ingress-tls.key --cert=certs/ingress-tls.crt -o yaml
+	kubectl create secret tls ingress-cert --key=./certs/ingress-tls.key --cert=./certs/ingress-tls.crt -o yaml
 
 delete_cert_secret:
 	kubectl delete secret ingress-cert
