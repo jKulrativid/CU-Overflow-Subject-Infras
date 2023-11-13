@@ -72,9 +72,9 @@ update_submodules:
 
 gen_cert:
 	mkdir -p certs
-	openssl genrsa -aes256 -pass pass:${CERT_KEY_PASSWORD} -out certs/ca-key.pem 4096
+	openssl genrsa -aes256 -passin pass:${CERT_KEY_PASSWORD} -out certs/ca-key.pem 4096
 	openssl req -new -x509 -sha256 -days 365 -key certs/ca-key.pem -out certs/ca.pem -nodes -subj "/C=TH/ST=BangkokMetropolitan/L=Bangkok/O=CU-Overflow/OU=SiteReliability/CN=Release-1.0"
-	openssl genrsa -out -pass pass:${CERT_KEY_PASSWORD} certs/cert-key.pem 4096
+	openssl genrsa -out -passin pass:${CERT_KEY_PASSWORD} certs/cert-key.pem 4096
 	openssl req -new -sha256 -key certs/cert-key.pem -out certs/cert.csr -nodes -subj "/C=TH/ST=BangkokMetropolitan/L=Bangkok/O=CU-Overflow/OU=SiteReliability/CN=Release-1.0"
 	echo "IP:${PUBLIC_IP}" >> certs/extfile.cnf
 	openssl x509 -req -sha256 -days 3650 -in certs/cert.csr -CA certs/ca.pem -CAkey certs/ca-key.pem -out certs/cert.pem -extfile certs/extfile.cnf -CAcreateserial
