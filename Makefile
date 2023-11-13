@@ -70,6 +70,13 @@ init_submodules:
 update_submodules:
 	git submodule update --remote --recursive
 
+gen_cert:
+	mkdir -p certs
+	openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/C=TH/ST=BangkokMetropolitan/L=Bangkok/O=CU-Overflow/OU=SiteReliability/CN=Release-1.0"
+
+read_cert:
+	kubectl create secret tls ingress-cert --key=certs/ingress-tls.key --cert=certs/ingress-tls.crt -o yaml
+
 ### DEPRECATED ### 
 ### Terraform Command ###
 create_infras:
