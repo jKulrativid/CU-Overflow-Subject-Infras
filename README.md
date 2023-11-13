@@ -51,7 +51,7 @@ make finish_migrate_db
 
 ## Finally, run
 ```bash
-kubectl port-forward service/nginx-ingress-ingress-nginx-controller 8000:80 --address 0.0.0.0
+kubectl port-forward service/nginx-ingress-ingress-nginx-controller 8000:443 --address 0.0.0.0
 ```
 
 ## You can reach the frontend at localhost (port 80)
