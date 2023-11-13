@@ -20,13 +20,16 @@ build_gateway:
 	docker push jkulrativ/gateway-app:latest
 
 build_web:
-	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=http://${PUBLIC_IP}:80" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t jkulrativ/web
+	docker build ./SA-Front-End/. --build-arg="VITE_GATEWAY_URL=http://${PUBLIC_IP}:8000" --build-arg="VITE_DOMAIN=${PUBLIC_IP}" -t jkulrativ/web
 	docker push jkulrativ/web:latest
 
 build_images: build_subject build_filestorage build_filestorage_migrator build_topic build_gateway build_web
 
 install_common:
 	helm install common ./helm/common
+
+upgrade_common:
+	helm upgrade common ./helm/common
 
 uninstall_common:
 	helm uninstall common
@@ -38,6 +41,14 @@ install_charts:
 	helm install api-gateway ./helm/api-gateway
 	helm install web ./helm/web-service
 	helm install ingress ./helm/ingress
+
+upgrade_charts:
+	helm upgrade subject-service ./helm/subject-service
+	helm upgrade filestorage-service ./helm/file-service
+	helm upgrade topic-service ./helm/topic-service
+	helm upgrade api-gateway ./helm/api-gateway
+	helm upgrade web ./helm/web-service
+	helm upgrade ingress ./helm/ingress
 
 uninstall_charts:
 	helm uninstall ingress
