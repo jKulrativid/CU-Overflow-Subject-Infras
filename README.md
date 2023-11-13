@@ -15,6 +15,12 @@
 #### It is surely a bad practice but it will be patched soon ^^.
 Place config-map (secret) in ./helm/common/template
 
+## SSL Certificates Installation
+```bash
+make gen_cert
+make read_cert
+```
+
 ## Install Common
 ```bash
 make install_common
