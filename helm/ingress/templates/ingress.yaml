@@ -2,9 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cu-overflow-ingress
-data:
-  ssl-ciphers: "ECDHE-ECDSA-AES128-GCM-SHA256"
-  ssl-protocols: "TLSv1"
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   rules:
