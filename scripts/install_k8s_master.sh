@@ -1,6 +1,8 @@
 ## Install Basics
-sudo apt install nfs-common
-sudo apt install make
+sudo apt update
+sudo apt upgrade openssl -y
+sudo apt install nfs-common -y
+sudo apt install make -y
 
 ## Install Kubernetes
 sudo hostnamectl set-hostname master
