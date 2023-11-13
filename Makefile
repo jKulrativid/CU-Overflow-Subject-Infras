@@ -73,14 +73,14 @@ update_submodules:
 gen_cert:
 	mkdir -p certs
 	openssl genrsa -aes256 -out certs/ca-key.pem 4096
-	openssl req -new -x509 -sha256 -days 365 -key certs/ca-key.pem -out certs/ca.pem -nodes -subj "/C=TH/ST=BangkokMetropolitan/L=Bangkok/O=CU-Overflow/OU=SiteReliability/CN=Release-1.0"
+	openssl req -new -x509 -sha256 -days 365 -key certs/ca-key.pem -out certs/ca.pem
 	openssl genrsa -out certs/cert-key.pem 4096
 	openssl req -new -sha256 -key certs/cert-key.pem -out certs/cert.csr -nodes -subj "/C=TH/ST=BangkokMetropolitan/L=Bangkok/O=CU-Overflow/OU=SiteReliability/CN=Release-1.0"
-	echo "IP:${PUBLIC_IP}" >> certs/extfile.cnf
+	echo "subjectAltName=DNS:${PUBLIC_IP},IP:${PUBLIC_IP}" >> certs/extfile.cnf
 	openssl x509 -req -sha256 -days 3650 -in certs/cert.csr -CA certs/ca.pem -CAkey certs/ca-key.pem -out certs/cert.pem -extfile certs/extfile.cnf -CAcreateserial
 	
 read_cert_secret:
-	kubectl create secret tls ingress-cert --key=./certs/cert-key.pem --cert=./certs/ingress-tls.crt -o yaml
+	kubectl create secret tls ingress-cert --key=./certs/cert-key.pem --cert=./certs/cert.pem -o yaml
 
 delete_cert_secret:
 	kubectl delete secret ingress-cert
