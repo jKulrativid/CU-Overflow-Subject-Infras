@@ -11,6 +11,12 @@
 - Around 10Gib Disk Space for Persistent Volume in Master Node
 - MongoDB URI Atlas for API Gateway Auth Service
 
+## Set Env Variables
+```bash
+export PUBLIC_IP=
+export CERT_KEY_PASSWORD=
+```
+
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
 Place config-map (secret) in ./helm/common/template
