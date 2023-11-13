@@ -21,7 +21,7 @@ spec:
             memory: "128Mi"
             cpu: "250m"
           limits:
-            memory: "256Mi"
+            memory: "512Mi"
             cpu: "500m"
         ports:
           - containerPort: 8000
@@ -91,7 +91,7 @@ spec:
             memory: "128Mi"
             cpu: "250m"
           limits:
-            memory: "256Mi"
+            memory: "1000Mi"
             cpu: "500m"
         ports:
           - containerPort: 9000
@@ -145,7 +145,7 @@ spec:
             cpu: "250m"
           limits:
             memory: "256Mi"
-            cpu: "500m"
+            cpu: "1000m"
         ports:
           - containerPort: 5432
             name: postgres-port

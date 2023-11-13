@@ -18,11 +18,11 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits:
             memory: "256Mi"
             cpu: "500m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
         ports:
           - containerPort: 4000
             name: api-port
@@ -49,11 +49,11 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits:
             memory: "256Mi"
             cpu: "500m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
 
 ---
 
@@ -125,8 +125,8 @@ spec:
             memory: "128Mi"
             cpu: "250m"
           limits:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "1000m"
         ports:
           - containerPort: 27017
             name: connection-port
