@@ -51,7 +51,6 @@ make finish_migrate_db
 
 ## Finally, run
 ```bash
-iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 8000
 kubectl port-forward service/nginx-ingress-ingress-nginx-controller 8000:80 --address 0.0.0.0
 ```
 
