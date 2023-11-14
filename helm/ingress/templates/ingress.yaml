@@ -9,6 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-tls-error-page: "http://example.io/error-cert.html"
     nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - cu-overflow.shop
