@@ -37,19 +37,6 @@ make gen_cert
 make read_cert
 ```
 
-## Create Cluster Issue
-```bash
-kubectl apply -n cert-manager -f - <<EOF
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: ca-issuer
-spec:
-  ca:
-    secretName: ingress-cert
-EOF
-```
-
 ## Install Common
 ```bash
 make install_common
