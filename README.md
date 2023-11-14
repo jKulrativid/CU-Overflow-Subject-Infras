@@ -61,8 +61,9 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install nginx-ingress ingress-nginx/ingress-nginx
 ```
 
-## Place your certificate.crt, ca_bundle.crt, and private.key to directory ./certs
-## Then run
+## Place certificate file
+### Place your certificate.crt and private.key to directory ./certs
+### Then run
 ```bash
 make read_cert_secret
 ```
