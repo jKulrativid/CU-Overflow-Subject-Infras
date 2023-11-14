@@ -3,13 +3,13 @@ kind: Ingress
 metadata:
   name: cu-overflow-ingress
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
     nginx.ingress.kubernetes.io/auth-tls-secret: "ingress-cert"
     nginx.ingress.kubernetes.io/auth-tls-error-page: "http://example.io/error-cert.html"
     nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
 spec:
-  ingressClassName: nginx
   tls:
   - secretName: ingress-cert
   rules:
