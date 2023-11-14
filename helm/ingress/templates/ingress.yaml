@@ -14,7 +14,7 @@ spec:
         - cu-overflow.shop
       secretName: ingress-cert
   rules:
-    - host: 127.0.0.1
+    - host: cu-overflow.shop
       http:
         paths:
         - path: /api
