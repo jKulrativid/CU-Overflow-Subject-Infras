@@ -12,20 +12,20 @@ spec:
         - cu-overflow.shop
       secretName: ingress-cert
   rules:
-    - host: cu-overflow.shop
-      http:
-        paths:
-        - path: /api
-          pathType: Prefix
-          backend:
-            service:
-              name: gateway-app-service
-              port:
-                number: 3001
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: web-service
-              port:
-                number: 8080
+  - host: cu-overflow.shop
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: gateway-app-service
+            port:
+              number: 3001
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web-service
+            port:
+              number: 8080
