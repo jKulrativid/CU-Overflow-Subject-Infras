@@ -71,7 +71,7 @@ update_submodules:
 	git submodule update --remote --recursive
 
 read_cert_secret:
-	kubectl create secret tls ingress-cert --key=./certs/private.key --cert=./certs/certificate.crt --cacert=./certs/ca_bundle.crt -o yaml
+	kubectl create secret tls ingress-cert --key=./certs/private.key --cert=./certs/certificate.crt -o yaml
 
 delete_cert_secret:
 	kubectl delete secret ingress-cert
