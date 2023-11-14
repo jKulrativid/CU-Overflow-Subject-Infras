@@ -8,6 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-tls-secret: "ingress-cert"
     nginx.ingress.kubernetes.io/auth-tls-error-page: "http://example.io/error-cert.html"
     nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   tls:
@@ -15,7 +16,7 @@ spec:
         - cu-overflow.shop
       secretName: ingress-cert
   rules:
-    - host: "*"
+    - host: cu-overflow.shop
       http:
         paths:
         - path: /api
