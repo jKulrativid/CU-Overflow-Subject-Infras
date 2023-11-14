@@ -17,16 +17,6 @@ export PUBLIC_IP=
 export CERT_KEY_PASSWORD=
 ```
 
-## Deploy Cert Manager
-```bash
-helm upgrade --install --wait --timeout 15m \
-  --namespace cert-manager --create-namespace \
-  --repo https://charts.jetstack.io cert-manager cert-manager \
-  --values - <<EOF
-installCRDs: true
-EOF
-```
-
 ## Create Secret Configmap
 #### It is surely a bad practice but it will be patched soon ^^.
 Place config-map (secret) in ./helm/common/template
