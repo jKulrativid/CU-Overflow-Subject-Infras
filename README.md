@@ -61,6 +61,12 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install nginx-ingress ingress-nginx/ingress-nginx
 ```
 
+## Place your certificate.crt, ca_bundle.crt, and private.key to directory ./certs
+## Then run
+```bash
+make read_cert_secret
+```
+
 ## Install Services with Helm
 ```bash
 make install_charts
@@ -81,7 +87,7 @@ make finish_migrate_db
 kubectl port-forward service/nginx-ingress-ingress-nginx-controller 8000:443 --address 0.0.0.0
 ```
 
-## You can reach the frontend at localhost (port 80)
+## You can reach the frontend at localhost (port 8000)
 
 ## To uninstall services, run
 ```bash
