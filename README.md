@@ -8,7 +8,7 @@
 - Kubernetes
 - Helm
 - Make
-- Around 10Gib Disk Space for Persistent Volume in Master Node
+- NFS
 - MongoDB URI Atlas for API Gateway Auth Service
 
 ## Set Env Variables
