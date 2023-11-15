@@ -1,5 +1,12 @@
 # CU-Overflow-Subject-Infras
 
+# Architecture Overview
+## System Architecture
+![alt text](https://github.com/jKulrativid/CU-Overflow-Subject-Infras/blob/main/docs/images/architecture.png)
+
+## Kubernetest Object Map
+![alt text](https://github.com/jKulrativid/CU-Overflow-Subject-Infras/blob/main/docs/images/k8s-object-diagram.png)
+
 # Installation
 
 ## Required
